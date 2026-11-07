@@ -1,0 +1,13 @@
+name: Tools CI
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify Tools
+        run: |
+          test -f fmt/nova_fmt
+          test -f lint/nova_lint
+          test -f docgen/main.nova
+          test -f repl/nova_repl
